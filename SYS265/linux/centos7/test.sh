@@ -20,7 +20,7 @@ sudo chsh -s /bin/bash "$name"
 echo "Done"
 
 echo "Copying public RSA key from repository"
-sudo cp /home/bfretz/Classwork/SYS265/linux/public-keys/id_rsa.pub /home/"$name"/.ssh/authorized_keys
+sudo cp /home/bfretz/Classwork/SYS265/linux/public-keys/id_rsa_33.pub /home/"$name"/.ssh/authorized_keys
 echo "Done"
 
 echo "Setting correct permissions"
