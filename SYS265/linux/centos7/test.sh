@@ -11,7 +11,8 @@ echo "Alright sounds good, an account named $name has been created"
 sleep 1
 
 echo "Setting user in sudo group"
-usermod -aG sudo "$name"
+sudo usermod -aG sudo "$name"
+echo "$name ALL=(ALL:ALL) ALL" | sudo EDITOR='tee -a' visudo
 
 echo "Creating home directory .ssh folder"
 sudo mkdir /home/"$name"/.ssh/
@@ -26,7 +27,6 @@ echo "Setting correct permissions"
 sudo chmod 700 /home/"$name"/.ssh
 sudo chmod 600 /home/"$name"/.ssh/authorized_keys
 sudo chown -R "$name":"$name" /home/"$name"/.ssh
-sudo echo "$name ALL=(ALL:ALL) ALL" | sudo EDITOR='tee -a' visudo
 echo "Done"
 
 
