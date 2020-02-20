@@ -10,6 +10,9 @@ echo -ne '\n' | sudo adduser "$name" --disabled-password
 echo "Alright sounds good, an account named $name has been created"
 sleep 1
 
+echo "Setting user in sudo group"
+usermod -aG sudo "$name"
+
 echo "Creating home directory .ssh folder"
 sudo mkdir /home/"$name"/.ssh/
 sudo chsh -s /bin/bash "$name"
