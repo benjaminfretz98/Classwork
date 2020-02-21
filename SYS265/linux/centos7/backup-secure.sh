@@ -6,13 +6,12 @@
 echo "Howdy there brotherman, we're gonna create you a secure passwordless SSH user"
 read -p "What would you like the name of your new account to be? " name
 sleep 1
-
 sudo useradd -m -d /home/"$name" -s /bin/bash "$name"
 echo "Alright sounds good, an account named $name has been created"
 sleep 1
 
 echo "Creating home directory .ssh folder"
-sudo mkdir /home/"$name"/.ssh
+sudo mkdir /home/"$name"/.ssh/
 echo "Done"
 
 echo "Copying public RSA key from repository"
@@ -23,6 +22,7 @@ echo "Setting correct permissions"
 sudo chmod 700 /home/"$name"/.ssh
 sudo chmod 600 /home/"$name"/.ssh/authorized_keys
 sudo chown -R "$name":"$name" /home/"$name"/.ssh
+sudo echo "$name ALL=(ALL:ALL) ALL" | sudo EDITOR='tee -a' visudo
 echo "Done"
 
 
